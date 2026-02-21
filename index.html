@@ -4,43 +4,43 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Abandoned Yesterday</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;600;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.png" type="image/png">
 <style>
-/* ===== GLOBAL STYLES ===== */
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
-    background: linear-gradient(
-        45deg,
-        #000000,
-        #140014,
-        #1f001f,
-        #000000
-    );
-    background-size: 400% 400%;
-    animation: gradientShift 12s ease infinite;
-    color: white;
-    overflow-x: hidden;
-}@keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+:root {
+  --amber:#ff9a00;
+  --magenta:#ff0066;
+  --dark:#0a0a0a;
+  --gray:#141414;
+  --light:#f5f5f5;
+}*{margin:0;padding:0;box-sizing:border-box} body{ font-family:'Inter',sans-serif; background: linear-gradient(45deg, #000000, #140014, #1f001f, #000000); background-size: 400% 400%; animation: gradientShift 12s ease infinite; color: var(--light); overflow-x: hidden; } @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
 /* Subtle grain overlay */ body::before { content: ""; position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; opacity: 0.05; background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); z-index: 9999; }
 
-/* Centered Logo */ .logo { display: block; margin: 40px auto 20px auto; max-width: 320px; }
+/* Centered Logo */ .nav-logo { max-width: 250px; width: 80%; height: auto; object-fit: contain; display: block; margin: 40px auto 20px auto; filter: drop-shadow(0 0 12px rgba(255,255,255,.35)); }
 
-/* Section spacing */ section { padding: 80px 20px; text-align: center; }
+header{ position: fixed; width: 100%; top: 0; background: rgba(0,0,0,.9); backdrop-filter: blur(6px); display: flex; flex-direction: column; align-items: center; z-index: 1000; border-bottom: 1px solid #222; }
 
-/* Gallery grid */ .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 40px 10%; }
+header nav{ display: flex; gap: 1.5rem; margin-bottom: 10px; } header nav a{ font-weight: 600; color: var(--light); transition: .3s; } header nav a:hover { color: var(--magenta); }
 
-.gallery img { width: 100%; height: auto; object-fit: cover; transition: transform 0.4s ease, filter 0.4s ease; }
+/* HERO */ .hero { height: 100vh; background: linear-gradient(to bottom, rgba(0,0,0,.7), rgba(0,0,0,.95)), url('hero.jpg') center/cover no-repeat fixed; display: flex; align-items: center; justify-content: center; text-align: center; position: relative; z-index: 1; } .hero h1 { font-size: 3rem; background: linear-gradient(90deg, var(--amber), var(--magenta)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: flicker 3s infinite alternate; } @keyframes flicker { 0%{opacity:1} 5%{opacity:.8} 10%{opacity:1} 15%{opacity:.6} 20%{opacity:1} 100%{opacity:1} } .btn { display: inline-block; margin-top: 1.5rem; padding: .8rem 1.6rem; border-radius: 30px; background: linear-gradient(90deg, var(--amber), var(--magenta)); color: #000; font-weight: 700; transition: .3s; } .btn:hover { opacity: .85; }
 
-.gallery img:hover { transform: scale(1.05); filter: brightness(1.2); }
+/* Sections */ section { padding: 80px 2rem; max-width: 1100px; margin: auto; position: relative; z-index: 1; text-align: center; }
 
-/* Buttons */ .button { display: inline-block; padding: 12px 28px; margin: 15px; border: 2px solid #ff00aa; color: #ff00aa; text-decoration: none; transition: all 0.3s ease; }
+/* Shows */ .show-item { background: var(--gray); padding: 1.5rem; margin-bottom: 1rem; border-left: 4px solid var(--magenta); border-radius: 8px; transform: translateY(30px); opacity: 0; transition: .6s; } .show-item.visible { transform: translateY(0); opacity: 1; }
 
-.button:hover { background: #ff00aa; color: black; }
+/* Music */ .music iframe { width: 100%; border-radius: 12px; margin-top: 1rem; }
 
-</style>
+/* Merch */ .merch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2rem; } .merch-item { background: var(--gray); padding: 1rem; border-radius: 12px; text-align: center; transition: .3s; } .merch-item:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(255,0,102,.3); } .merch-item img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 1rem; }
+
+/* Gallery */ .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; padding: 40px 10%; } .gallery-grid img { width: 100%; max-height: 250px; object-fit: cover; border-radius: 12px; transition: transform .4s ease, filter .4s ease; } .gallery-grid img:hover { transform: scale(1.05); filter: brightness(1.2); }
+
+/* Contact */ .contact-form { display: grid; gap: 1rem; margin-top: 2rem; } .contact-form input, .contact-form textarea { padding: .8rem; border-radius: 8px; border: none; background: #1e1e1e; color: white; }
+
+footer { background: #000; padding: 4rem 2rem; border-top: 1px solid #222; } .footer-grid { max-width: 1100px; margin: auto; display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; } @media(max-width:900px){ .footer-grid { grid-template-columns: 1fr; } .hero h1 { font-size: 2.2rem; } } </style>
+
 </head>
-<body><header>
+<body>
+<header>
 <img src="logo.png" alt="Abandoned Yesterday Logo" class="nav-logo">
 <nav>
 <a href="#shows">Shows</a>
@@ -68,6 +68,8 @@ body {
 <img src="gallery2.jpg" alt="Live Show">
 <img src="gallery3.jpg" alt="Performance">
 <img src="gallery4.jpg" alt="Crowd Shot">
+<img src="gallery5.jpg" alt="Backstage">
+<img src="gallery6.jpg" alt="Band Portrait">
 </div>
 </section><section id="merch">
 <h2>Merch</h2>
@@ -95,9 +97,7 @@ body {
 <div class="footer-grid">
 <div>
 <h2>About</h2>
-<p>
-Abandoned Yesterday is a raw and unapologetic emo/heavy alternative band from Vancouver, BC. Born from heartbreak, self-doubt, and the scars of growing up, this 5-piece creates a sound that's both cathartic and confrontational.
-</p>
+<p>Abandoned Yesterday is a raw and unapologetic emo/heavy alternative band from Vancouver, BC. Born from heartbreak, self-doubt, and the scars of growing up, this 5-piece creates a sound that's both cathartic and confrontational.</p>
 <p style="margin-top:1rem;">📩 abandonedyesterday@gmail.com</p>
 </div>
 <div>
@@ -116,12 +116,11 @@ Abandoned Yesterday is a raw and unapologetic emo/heavy alternative band from Va
 </div>
 </div>
 </footer><script>
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add('visible');}
-});
-},{threshold:.2});
-document.querySelectorAll('.show-item').forEach(el=>observer.observe(el));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting){ entry.target.classList.add('visible'); }
+  });
+},{threshold: .2});
+document.querySelectorAll('.show-item').forEach(el => observer.observe(el));
 </script></body>
 </html>
-
